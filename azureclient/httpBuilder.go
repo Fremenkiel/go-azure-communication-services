@@ -65,7 +65,7 @@ func (c *client_) buildRequest(
 	date := time.Now().UTC().Format(http.TimeFormat)
 
 	content, authHeader := createAuthHeader(
-		method,
+		string(method),
 		host,
 		resour,
 		date,
@@ -76,7 +76,7 @@ func (c *client_) buildRequest(
 	fmt.Println(authHeader)
 	fmt.Println(host)
 	fmt.Println(resour)
-	res, err := http.NewRequestWithContext(ctx, method, "https://"+host+resour, bytes.NewReader(body))
+	res, err := http.NewRequestWithContext(ctx, string(method), "https://"+host+resour, bytes.NewReader(body))
 	res.Header.Add("x-ms-date", date)
 	res.Header.Add("x-ms-content-sha256", content)
 	res.Header.Add("Authorization", authHeader)
