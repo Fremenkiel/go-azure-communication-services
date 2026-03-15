@@ -30,7 +30,7 @@ func (c *client_) Request(
 	defer res.Body.Close()
 	resBody, err := io.ReadAll(res.Body)
 
-	if res.StatusCode != http.StatusOK {
+	if res.StatusCode != http.StatusAccepted {
 		log.Println(method + " Request failed")
 		log.Println("response: " + string(resBody))
 		log.Println("status_code: " + res.Status)

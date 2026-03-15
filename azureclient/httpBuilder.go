@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strings"
 	"time"
@@ -73,9 +72,6 @@ func (c *client_) buildRequest(
 		body,
 	)
 
-	fmt.Println(authHeader)
-	fmt.Println(host)
-	fmt.Println(resour)
 	res, err := http.NewRequestWithContext(ctx, string(method), "https://"+host+resour, bytes.NewReader(body))
 	res.Header.Add("x-ms-date", date)
 	res.Header.Add("x-ms-content-sha256", content)
